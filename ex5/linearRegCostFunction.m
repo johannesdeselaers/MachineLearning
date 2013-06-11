@@ -20,14 +20,11 @@ grad = zeros(size(theta));
 %
 
 
+regTerm = lambda/(2*m) * sum(theta(2:end).^2);
 
-
-
-
-
-
-
-
+hypothesis = X * theta;
+J = sum((hypothesis - y).^2)/(2*m) + regTerm;
+grad = (X'*(hypothesis - y))/m + (lambda * [0; theta(2:end)])/m ;
 
 
 % =========================================================================
